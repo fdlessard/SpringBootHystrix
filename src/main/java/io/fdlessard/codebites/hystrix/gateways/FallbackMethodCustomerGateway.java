@@ -10,15 +10,19 @@ import org.springframework.web.client.RestOperations;
 
 @Slf4j
 @Service
-public class CustomerGateway {
+public class FallbackMethodCustomerGateway {
 
     @Qualifier("customerRestTemplate")
     private RestOperations restOperations;
 
+    public FallbackMethodCustomerGateway(@Qualifier("customerRestTemplate") RestOperations restOperations) {
+        this.restOperations = restOperations;
+    }
+
     @HystrixCommand(fallbackMethod = "reliable")
     public Customer getCustomer(String id) {
 
-        log.debug("CustomerGateway.getCustomer({})", id);
+        log.debug("FallbackMethodCustomerGateway.getCustomer({})", id);
 
         return restOperations.getForObject("http://localhost:8090/customer/12", Customer.class);
     }
