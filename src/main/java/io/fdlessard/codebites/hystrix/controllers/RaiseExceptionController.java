@@ -16,7 +16,7 @@ public class RaiseExceptionController {
     @Autowired
     private RaiseExceptionCustomerGateway raiseExceptionCustomerGateway;
 
-    @GetMapping(path = "/raise/customer/{id}", produces = "application/json")
+    @GetMapping(path = "/raise/customers/{id}", produces = "application/json")
     public Customer getCustomerRaise(@PathVariable String id) {
 
         log.debug("RaiseExceptionCustomerGateway.getCustomerRaise({})", id);

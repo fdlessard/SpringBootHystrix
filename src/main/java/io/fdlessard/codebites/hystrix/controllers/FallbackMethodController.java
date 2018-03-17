@@ -21,7 +21,7 @@ public class FallbackMethodController {
     @Autowired
     private FallbackMethodProductGateway fallbackMethodProductGateway;
 
-    @GetMapping(path = "/fallback/customer/{id}", produces = "application/json")
+    @GetMapping(path = "/fallback/customers/{id}", produces = "application/json")
     public Customer getCustomer(@PathVariable String id) {
 
         log.debug("FallbackMethodController.getCustomer({})", id);
